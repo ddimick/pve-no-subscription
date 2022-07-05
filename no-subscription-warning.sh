@@ -29,7 +29,7 @@ ACTIVE="Active"
 FILE=/usr/share/perl5/PVE/API2/Subscription.pm
 ARG="$1"
 
-apply_pve-no-subscription() {
+apply_nonag() {
   sed -i "s/$FIND/$ACTIVE/g" "$FILE"
   echo "restarting services..."
   systemctl restart pvedaemon
@@ -52,4 +52,4 @@ if ! [ -n "$ARG" ]; then
 fi
 
 echo "attempting replacement in $FILE..."
-apply_pve-no-subscription
+apply_nonag
